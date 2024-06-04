@@ -66,9 +66,9 @@ class CustomDataset(Dataset):
 
         return image1, image2, params_sequence1, params_sequence2
 
-class GPS(nn.Module):
+class SpectroGen(nn.Module):
     def __init__(self):
-        super(GPS, self).__init__()
+        super(SpectroGen, self).__init__()
         # Encoder
         self.conv1 = nn.Conv2d(1, 32, kernel_size=3, stride=2, padding=1)
         self.conv2 = nn.Conv2d(32, 64, kernel_size=3, stride=2, padding=1)
@@ -127,7 +127,7 @@ class GPS(nn.Module):
 
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-model = GPS().cuda()
+model = SpectroGen().cuda()
 model.load_state_dict(torch.load('model.pth'))
 model.eval()
 
